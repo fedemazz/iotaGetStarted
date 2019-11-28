@@ -52,6 +52,7 @@ iota
   })
   .then(bundle => {
     console.log("hash della transazione: " + bundle[0].hash);
+    console.log(bundle);
   })
   .catch(err => {
     console.error(err)
