@@ -22,14 +22,15 @@ const publish = async packet => {
     // Attach the payload
     await Mam.attach(message.payload, message.address, 3, 9)
 
-    console.log('Published', packet, '\n');
-    console.log(message.root);
+    console.log('Messaggio pubblicato', packet, '\n');
     return message.root
 }
 
 cont = 0;
 setInterval(function(){
 cont++;
+//creo un oggetto js contenente le informazioni del mio messaggio
+//ovviamente è sempre uguale perchè di prova
 const root = publish({
     message: 'Message from Alice',
     timestamp: (new Date()).toLocaleString(),
