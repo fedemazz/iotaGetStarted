@@ -1,6 +1,5 @@
 //invio messaggi mam su canale restricted chiedendo da terminale il valore del messaggio da scrivere
 
-
 const Mam = require('@iota/mam')
 const { asciiToTrytes, trytesToAscii } = require('@iota/converter')
 var readline = require('readline-sync');
@@ -12,9 +11,9 @@ const sideKey = 'MYSIDEKEY'
 // Initialise MAM State
 let mamState = Mam.init(provider)
 
-//E' l'unica modifica da fare tra questo codice e l'uppload pubblico. 
-//cambio lo stato del canale mam da pubblico a privato
+//il canale è impostato su restricted
 mamState = Mam.changeMode(mamState, mode, sideKey)
+
 // Publish to tangle
 const publish = async packet => {
 
@@ -38,7 +37,7 @@ function askToUser() {
 var name = readline.question("Inserisci qui il testo del messaggio:");
 publish({
     message: name,
-    timestamp: (new Date()).toLocaleString()
+    inviato: (new Date()).toLocaleString()
   })
 }
 

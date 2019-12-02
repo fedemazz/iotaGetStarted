@@ -9,11 +9,11 @@ const Converter = require('@iota/converter');
 
 // Connessione al nodo
 const iota = Iota.composeAPI({
-  provider: 'https://nodes.devnet.thetangle.org:443'
+  provider: 'https://nodes.iota.cafe:443'
 });
 
 const depth = 3;
-const minimumWeightMagnitude = 9;
+const minimumWeightMagnitude = 14;
 
 // Define a seed and an address.
 // These do not need to belong to anyone or have IOTA tokens.

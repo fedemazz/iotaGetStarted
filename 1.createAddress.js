@@ -13,7 +13,7 @@ const Iota = require('@iota/core');
 
 // connessione al nodo su rete devNet
 const iota = Iota.composeAPI({
-  provider: 'https://nodes.devnet.thetangle.org:443'
+  provider: 'https://nodes.iota.cafe:443'
 });
 
 //livello di sicurezza scelto per l'account

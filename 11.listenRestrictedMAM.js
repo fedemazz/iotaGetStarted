@@ -1,13 +1,15 @@
 //il seguente codice permette di rimanere in ascolto su un canale MAM partendo da un root
 //il root è l'identificatore del MAM ed ogni volta che viene trovato un nuovo mam, la root cambia 
-
+//viene utilizzata anche una sidekey (password del canale), in quanto il canale è restricted
 
 const Mam = require('@iota/mam')
 const { asciiToTrytes, trytesToAscii } = require('@iota/converter')
 
 //root channel mam
 root = 'QFEZONJRUWORDOPEQLISNKHWBNVAOSZSXGSVECKBPZCIOPOZZLRCQO99YGHGBINULNPZFLROYLAHHCVHS'
+//channel type
 mode = 'restricted'
+//channel key per decriptare i messaggi
 sideKey = 'MYSIDEKEY'
 
 async function initMam() {
@@ -18,15 +20,16 @@ async function initMam() {
 //controllo ogni 5 secondi se sono presenti nuovi messaggi nel canale
 async function checkMam() {
 
-  // The showData callback will be called in order for each message found
+  //fetch è la funzione che si occupa di recuperare i messaggi da un certo root
   const data = await Mam.fetch(root, 'restricted', 'MYSIDEKEY', showData);
-  //la nuova root, cioè l'indirizzo del prossimo messaggio è contenuto nel ritorno della funzione sopra (Mam.fetch)
+  //la nuova root, cioè l'indirizzo del prossimo messaggio, è contenuta nel ritorno di Mam.fetch
   root = data.nextRoot;
   //richiamo la funzione ogni 5 secondi
   setTimeout(checkMam, 5000);
 }
 
 //funzione per visualizzare i dati a schermo
+//richiamata come callback quando viene trovato un nuovo messaggio nel canale
 const showData = raw => {
     const data = trytesToAscii(raw)
     console.log(data);
