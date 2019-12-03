@@ -5,11 +5,11 @@
 const Mam = require('@iota/mam')
 const { trytesToAscii } = require('@iota/converter')
 
-const seed ='HYEWPPA9WIOAUS9GWNFOSUTIWBSZPARXXBTAFUEKIJZJBHMDGTFXMTXBUDOXRBBECAZTNENFHPF9TTCOQ';
+//const seed ='HYEWPPA9WIOAUS9GWNFOSUTIWBSZPARXXBTAFUEKIJZJBHMDGTFXMTXBUDOXRBBECAZTNENFHPF9TTCOQ';
 // Initialize MAM State - PUBLIC
-const mam = Mam.init('https://nodes.devnet.thetangle.org:443', seed)
+const mam = Mam.init('https://nodes.devnet.thetangle.org:443')
 
-const root = 'LMRYISMSSC9KJUNUDJGLJZTDDIWNLI9BQJJWVOVXEZJAJSVMWGCCQK9NFRUDFOBAYMEVBLSSQMUKMEHRB'
+const root = 'MNAZJTXEPIISODTLDIBO9PHJEUEYEJCZJCQHAKVLAPLECN9SEAKNVGSNCZVXGHMZHGXDWUNENTBUDPLSG'
 
 // Display coordinate data on our screen when we receive it
 const showData = raw => {

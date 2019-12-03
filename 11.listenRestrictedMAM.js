@@ -4,13 +4,14 @@
 
 const Mam = require('@iota/mam')
 const { asciiToTrytes, trytesToAscii } = require('@iota/converter')
+var readline = require('readline-sync');
 
 //root channel mam
-root = 'QFEZONJRUWORDOPEQLISNKHWBNVAOSZSXGSVECKBPZCIOPOZZLRCQO99YGHGBINULNPZFLROYLAHHCVHS'
+//root = 'QFEZONJRUWORDOPEQLISNKHWBNVAOSZSXGSVECKBPZCIOPOZZLRCQO99YGHGBINULNPZFLROYLAHHCVHS'
 //channel type
 mode = 'restricted'
 //channel key per decriptare i messaggi
-sideKey = 'MYSIDEKEY'
+//sideKey = 'MYSIDEKEY'
 
 async function initMam() {
   console.log("In ascolto...");
@@ -18,10 +19,10 @@ async function initMam() {
 }
 
 //controllo ogni 5 secondi se sono presenti nuovi messaggi nel canale
-async function checkMam() {
+async function checkMam(root, sideKey) {
 
   //fetch è la funzione che si occupa di recuperare i messaggi da un certo root
-  const data = await Mam.fetch(root, 'restricted', 'MYSIDEKEY', showData);
+  const data = await Mam.fetch(root, 'restricted', sideKey, showData);
   //la nuova root, cioè l'indirizzo del prossimo messaggio, è contenuta nel ritorno di Mam.fetch
   root = data.nextRoot;
   //richiamo la funzione ogni 5 secondi
@@ -36,6 +37,14 @@ const showData = raw => {
     console.log('\n'+ "In ascolto...");
   }
 
-//chiamo init e check
-initMam()
-checkMam()
+
+
+function askToUser() {
+  var root = readline.question("Inserisci il root del canale: ");
+  var sideKey = readline.question("Inserisci la password del canale: ");
+  checkMam(root, sideKey);
+  }
+  
+  //chiamo init e check
+  initMam()
+  askToUser();

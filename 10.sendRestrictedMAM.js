@@ -6,13 +6,11 @@ var readline = require('readline-sync');
 
 const provider = 'https://nodes.devnet.iota.org:443'
 const mode = 'restricted'
-const sideKey = 'MYSIDEKEY'
+var sideKey;
 
 // Initialise MAM State
 let mamState = Mam.init(provider)
 
-//il canale è impostato su restricted
-mamState = Mam.changeMode(mamState, mode, sideKey)
 
 // Publish to tangle
 const publish = async packet => {
@@ -41,4 +39,11 @@ publish({
   })
 }
 
+function setSideKey(){
+sideKey = readline.question("Inserisci la password del tuo futuro canale: ");
+//il canale è impostato su restricted
+mamState = Mam.changeMode(mamState, mode, sideKey)
+}
+
+setSideKey();
 askToUser();

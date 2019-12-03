@@ -23,6 +23,7 @@ const publish = async packet => {
     await Mam.attach(message.payload, message.address, 3, 9)
 
     console.log('Messaggio pubblicato', packet, '\n');
+    console.log(message.root);
     return message.root
 }
 

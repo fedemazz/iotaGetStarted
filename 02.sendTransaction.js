@@ -9,7 +9,7 @@ const Converter = require('@iota/converter');
 
 // Connessione al nodo
 const iota = Iota.composeAPI({
-  provider: 'https://nodes.iota.cafe:443'
+  provider: 'https://node.deviceproof.org:443'
 });
 
 const depth = 3;
