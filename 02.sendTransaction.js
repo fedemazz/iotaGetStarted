@@ -9,21 +9,22 @@ const Converter = require('@iota/converter');
 
 // Connessione al nodo
 const iota = Iota.composeAPI({
-  provider: 'https://node.deviceproof.org:443'
+  provider: 'https://nodes.devnet.iota.org:443'
 });
 
 const depth = 3;
-const minimumWeightMagnitude = 14;
+const minimumWeightMagnitude = 9;
 
 // Define a seed and an address.
 // These do not need to belong to anyone or have IOTA tokens.
 // They must only contain a mamximum of 81 trytes
 // or 90 trytes with a valid checksum
 const seed =
-  'HYEWPPA9WIOAUS9GWNFOSUTIWBSZPARXXBTAFUEKIJZJBHMDGTFXMTXBUDOXRBBECAZTNENFHPF9TTCOQ';
+  'HYEWPPA9WPOAUS9GWNFOSUTIWBSZPARXXBTAFUEKIJZJBHMDGTFXMTXBUDOXRBBECAZTNENFHPF9TTCOQ';
 
 //vado a creare un indirizzo
 const address = Iota.generateAddress(seed, 0, 1);
+//const address = '9HLQJ9GGTUKFLHGISMNBFRICACC9MGRBUPVHGYUUFRWDXHLEJUSOONS9UUKNGBPSGRTRSUFBUO9AYJZL';
 console.log("Address transaction: " + address);
 
 // Define a message to send.
@@ -32,14 +33,15 @@ const message = JSON.stringify({"message": "La prima transazione"});
 
 // Convert the message to trytes
 const messageInTrytes = Converter.asciiToTrytes(message);
-
+const tagg = Converter.asciiToTrytes('temperature');
 // Define a zero-value transaction object
 // that sends the message to the address
 const transfers = [
   {
     value: 0,
     address: address,
-    message: messageInTrytes
+    message: messageInTrytes,
+    tag:tagg
   }
 ];
 

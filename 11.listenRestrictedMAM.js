@@ -7,11 +7,11 @@ const { asciiToTrytes, trytesToAscii } = require('@iota/converter')
 var readline = require('readline-sync');
 
 //root channel mam
-//root = 'QFEZONJRUWORDOPEQLISNKHWBNVAOSZSXGSVECKBPZCIOPOZZLRCQO99YGHGBINULNPZFLROYLAHHCVHS'
+//root = ''
 //channel type
 mode = 'restricted'
 //channel key per decriptare i messaggi
-//sideKey = 'MYSIDEKEY'
+//sideKey = ''
 
 async function initMam() {
   console.log("In ascolto...");

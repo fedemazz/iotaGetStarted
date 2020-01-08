@@ -25,6 +25,7 @@ const publish = async packet => {
     await Mam.attach(message.payload, message.address, 3, 9)
 
     console.log('Messaggio pubblicato', packet, '\n');
+    console.log(message);
     console.log("root:  " + message.root);
     setTimeout(askToUser,1000);
     return message.root

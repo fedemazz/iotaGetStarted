@@ -12,5 +12,5 @@ provider: 'https://nodes.devnet.iota.org:443'
 });
 
 // Confirmed transaction
-iota.getLatestInclusion(['UCCFGCVNSNELXHBQZAWQGPDLNGKOGRRUJTXIVURJJCGMWMG9GBDOBNKAAWHJCFDQHDFAAFIKPIZTS9999'])
+iota.getLatestInclusion(['YLNXMHXEDFPTMUPUEYXGUHBIAXTEVRCYKKFKWDNQZTCJLVOXNIAILDELBWVDARSCISFSNNEDVSY9ER999'])
 .then(states => console.log('This transaction is confirmed? ' +  states));
